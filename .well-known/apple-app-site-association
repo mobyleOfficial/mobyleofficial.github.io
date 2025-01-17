@@ -7,6 +7,12 @@
         "paths": [
           "/*"
         ]
+      },
+      {
+        "appID": "3TS7T7V375.com.itau.enterprise",
+        "paths": [
+          "/*"
+        ]
       }
     ]
   }
