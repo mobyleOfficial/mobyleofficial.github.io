@@ -1,13 +1,4 @@
 team:
-  - name: Edson Toma
-    role: iOS Developer
-    avatar_url: https://avatars.githubusercontent.com/u/18668585?v=4
-    bio: "Mobile Software Development Engineer with over 5 years of experience, specializing in iOS and Flutter applications for large-scale products used by millions."
-    links:
-      github: https://github.com/EdYuTo
-      linkedin: https://www.linkedin.com/in/edyuto
-      email: edson.yudi.toma@gmail.com
-
   - name: Bruno Abe
     role: Android Developer
     avatar_url: https://avatars.githubusercontent.com/u/13877874?v=4
@@ -16,3 +7,12 @@ team:
       github: https://github.com/abe2602
       linkedin: https://www.linkedin.com/in/abe2602/
       email: abe2602@gmail.com
+
+  - name: Edson Toma
+    role: iOS Developer
+    avatar_url: https://avatars.githubusercontent.com/u/18668585?v=4
+    bio: "Mobile Software Development Engineer with over 5 years of experience, specializing in iOS and Flutter applications for large-scale products used by millions."
+    links:
+      github: https://github.com/EdYuTo
+      linkedin: https://www.linkedin.com/in/edyuto
+      email: edson.yudi.toma@gmail.com

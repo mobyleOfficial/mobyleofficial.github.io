@@ -1,0 +1,33 @@
+# Python
+env/
+venv/
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Env files
+.env
+.env.local
