@@ -1,0 +1,99 @@
+---
+layout: default
+title: Mobyle - iOS, Android & Flutter App Development
+---
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <img src="{{ '/logo.jpg' | relative_url }}" alt="Mobyle logo" class="logo">
+      <h1>Mobyle</h1>
+      <p class="tagline">Building iOS, Android & Flutter apps</p>
+      <p class="description">We create mobile applications for iOS and Android platforms, specializing in cross-platform development with Flutter.</p>
+    </div>
+  </section>
+
+  <!-- Who We Are Section -->
+  <section class="team" id="team">
+    <div class="container">
+      <h2>Who We Are</h2>
+      <div class="team-grid">
+        {% for member in site.data.team.team %}
+        <div class="team-card">
+          <img src="{{ member.avatar_url }}" alt="{{ member.name }}" class="avatar">
+          <h3>{{ member.name }}</h3>
+          <p class="role">{{ member.role }}</p>
+          <p class="bio">{{ member.bio }}</p>
+          <div class="social-links">
+            <a href="{{ member.links.github }}" target="_blank" title="GitHub">GitHub</a>
+            <a href="{{ member.links.linkedin }}" target="_blank" title="LinkedIn">LinkedIn</a>
+            <a href="mailto:{{ member.links.email }}" title="Email">Email</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack Section -->
+  <section class="stack" id="stack">
+    <div class="container">
+      <h2>Our Stack</h2>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <h3>iOS</h3>
+          <p>Swift, UIKit, SwiftUI, RxSwift, Clean Architecture</p>
+        </div>
+        <div class="stack-item">
+          <h3>Android</h3>
+          <p>Kotlin, Jetpack, Compose, RxJava, MVVM, Clean Architecture</p>
+        </div>
+        <div class="stack-item">
+          <h3>Cross-Platform</h3>
+          <p>Flutter, Dart, BLoC, RxDart, State Management</p>
+        </div>
+      </div>
+      <p class="stack-note">We specialize in building scalable, maintainable mobile applications with clean code and modern architectures.</p>
+    </div>
+  </section>
+
+  <!-- Featured Work Section -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2>Featured Work</h2>
+      <div class="projects-grid">
+        <!-- Moovie Project -->
+        <div class="project-card">
+          <h3>Moovie</h3>
+          <p class="tech">Flutter • Dart</p>
+          <p class="description">Save and share your favorite moovie</p>
+          <a href="https://github.com/mobyleOfficial/Moovie" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+
+        <!-- Easy-Japanese Project -->
+        <div class="project-card">
+          <h3>Easy-Japanese</h3>
+          <p class="tech">Android • Kotlin</p>
+          <p class="description">Language learning app for learning Japanese</p>
+          <a href="https://github.com/mobyleOfficial/Easy-Japanese" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+
+        <!-- Abbay Project -->
+        <div class="project-card">
+          <h3>Abbay</h3>
+          <p class="tech">iOS (SwiftUI) • Android (Jetpack Compose)</p>
+          <p class="description">A privacy-focused audiobook player available on both iOS and Android. Native implementations with support for playback speed control, chapter navigation, bookmarks, and more.</p>
+          <div class="abbay-links">
+            <a href="https://github.com/mobyleOfficial/AbbayiOS" target="_blank" class="project-link">iOS →</a>
+            <a href="https://github.com/mobyleOfficial/AbbayAndroid" target="_blank" class="project-link">Android →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="more-projects">
+        <p><a href="https://github.com/mobyleOfficial" target="_blank">View more of our work on GitHub →</a></p>
+      </div>
+    </div>
+  </section>
+</main>
