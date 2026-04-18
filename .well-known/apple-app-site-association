@@ -1,19 +1,6 @@
 {
   "applinks": {
     "apps": [],
-    "details": [
-      {
-        "appID": "2X5PWXY74F.com.edyuto.AbbayiOS",
-        "paths": [
-          "/*"
-        ]
-      },
-      {
-        "appID": "3TS7T7V375.com.itau.enterprise",
-        "paths": [
-          "/*"
-        ]
-      }
-    ]
+    "details": []
   }
 }
