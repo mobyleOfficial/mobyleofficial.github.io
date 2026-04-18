@@ -37,10 +37,10 @@ body {
 }
 
 .hero .logo {
-  max-width: 400px;
+  max-width: 297px;
   width: 100%;
   height: auto;
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
   display: block;
 }
 
