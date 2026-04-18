@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: "Mobyle - Mobile App Development" }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    {{ content }}
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Mobyle. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/mobyleOfficial" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
