@@ -327,3 +327,37 @@ body {
     flex-direction: column;
   }
 }
+
+/* Policy pages */
+.policy {
+  padding: 60px 0;
+}
+
+.policy h1 {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.policy h2 {
+  font-size: 1.3rem;
+  margin: 30px 0 10px;
+}
+
+.policy p,
+.policy ul {
+  margin-bottom: 15px;
+}
+
+.policy ul {
+  padding-left: 20px;
+}
+
+.policy a {
+  color: var(--primary-blue);
+}
+
+.policy hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 60px 0 40px;
+}
