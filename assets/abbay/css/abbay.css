@@ -59,9 +59,9 @@ html[data-lang="pt"] .i18n[lang="pt-BR"] { display: revert; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(26, 26, 26, 0.78);
-  -webkit-backdrop-filter: saturate(160%) blur(14px);
-  backdrop-filter: saturate(160%) blur(14px);
+  /* Solid rather than a backdrop blur: re-blurring the playing clips under the sticky header on
+     every scroll frame made them stutter. */
+  background: rgba(26, 26, 26, 0.96);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .ab-header__inner {
@@ -125,7 +125,9 @@ html[data-lang="pt"] .i18n[lang="pt-BR"] { display: revert; }
   width: 700px;
   aspect-ratio: 1;
   background: radial-gradient(closest-side, rgba(11, 218, 81, 0.20), rgba(78, 183, 206, 0.08) 55%, transparent 75%);
-  filter: blur(10px);
+  /* No filter: a blurred 700px layer animating behind the hero clip was repainted every frame.
+     The gradient is soft on its own, and a transform-only animation stays on the compositor. */
+  will-change: transform;
   pointer-events: none;
   animation: glow-drift 14s ease-in-out infinite alternate;
   z-index: 0;
