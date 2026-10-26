@@ -1,0 +1,214 @@
+---
+layout: default
+title: Abbay - free public-domain audiobooks for iPhone - Mobyle
+description: Abbay is a free audiobook player for iPhone. Listen to thousands of public-domain classics from LibriVox, offline, with no account, no ads and no tracking.
+permalink: /abbay/
+extra_css:
+  - /assets/abbay/css/abbay.css
+extra_js:
+  - /assets/abbay/js/abbay.js
+---
+{%- comment -%}
+  Two languages live side by side: every piece of text comes in an `.i18n` pair, `lang="en"` and
+  `lang="pt-BR"`. The CSS shows English unless <html data-lang="pt">, which abbay.js sets (from
+  localStorage, else navigator.language). Without JavaScript the page is English, the clips fall
+  back to the <noscript> videos and the language switch is hidden. No third-party anything.
+{%- endcomment -%}
+<script>
+  /* Pick the language before the first paint, so Portuguese readers don't see English flash by.
+     abbay.js does the rest (and the same choice: saved choice, else the browser's language). */
+  (function () {
+    var lang = null;
+    try { lang = localStorage.getItem('abbay.lang'); } catch (e) {}
+    if (lang !== 'en' && lang !== 'pt') {
+      var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+      lang = 'en';
+      for (var i = 0; i < list.length; i++) {
+        var code = String(list[i]).toLowerCase();
+        if (code.indexOf('pt') === 0) { lang = 'pt'; break; }
+        if (code.indexOf('en') === 0) break;
+      }
+    }
+    if (lang === 'pt') { document.documentElement.setAttribute('data-lang', 'pt'); document.documentElement.lang = 'pt-BR'; }
+  })();
+</script>
+<noscript><style>.js-video, .lang-switch { display: none !important; } .reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+<a class="skip-link" href="#main">
+  <span class="i18n" lang="en">Skip to content</span><span class="i18n" lang="pt-BR">Pular para o conteúdo</span>
+</a>
+
+<header class="ab-header">
+  <div class="ab-header__inner">
+    <a class="ab-header__home" href="{{ '/' | relative_url }}">
+      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Mobyle" width="48" height="34">
+    </a>
+    <div class="lang-switch" role="group" aria-label="Language / Idioma">
+      <button type="button" class="lang-switch__btn" data-set-lang="en" aria-pressed="true" lang="en" title="English">EN</button>
+      <button type="button" class="lang-switch__btn" data-set-lang="pt" aria-pressed="false" lang="pt-BR" title="Português (Brasil)">PT-BR</button>
+    </div>
+  </div>
+</header>
+
+<main class="abbay" id="main">
+
+  <!-- Hero -->
+  <section class="ab-hero" aria-labelledby="hero-title">
+    <div class="ab-container ab-hero__grid">
+      <div class="ab-hero__copy">
+        <img class="ab-hero__icon" src="{{ '/assets/abbay/img/icon-128.png' | relative_url }}"
+             srcset="{{ '/assets/abbay/img/icon-128.png' | relative_url }} 1x, {{ '/assets/abbay/img/icon-256.png' | relative_url }} 2x"
+             width="112" height="112" alt="Abbay app icon">
+        <h1 id="hero-title" class="ab-hero__title">Abbay</h1>
+        <p class="ab-hero__tagline">
+          <span class="i18n" lang="en">Free audiobooks, from the public domain.</span>
+          <span class="i18n" lang="pt-BR">Audiolivros grátis, de domínio público.</span>
+        </p>
+        <p class="ab-hero__lede">
+          <span class="i18n" lang="en">Thousands of classics read by LibriVox volunteers. Download them, listen offline and pick up right where you left off.</span>
+          <span class="i18n" lang="pt-BR">Milhares de clássicos lidos pelos voluntários do LibriVox. Baixe, ouça offline e continue exatamente de onde parou.</span>
+        </p>
+        <!-- TODO: Abbay isn't on the App Store yet. When it is, point href at its App Store page
+             and swap this placeholder for Apple's official "Download on the App Store" badge. -->
+        <a class="store-badge" href="#" data-placeholder="true">
+          <svg class="store-badge__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v11m0 0l-4.5-4.5M12 14l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="store-badge__text">
+            <span class="store-badge__small"><span class="i18n" lang="en">Coming soon on the</span><span class="i18n" lang="pt-BR">Em breve na</span></span>
+            <span class="store-badge__big">App Store</span>
+          </span>
+        </a>
+        <p class="ab-hero__note">
+          <span class="i18n" lang="en">For iPhone. Free, no account needed.</span>
+          <span class="i18n" lang="pt-BR">Para iPhone. Grátis, sem precisar de conta.</span>
+        </p>
+      </div>
+      <div class="ab-hero__device">
+        <div class="ab-hero__glow" aria-hidden="true"></div>
+        {% include abbay-phone.html clip="player" eager="true"
+           label_en="Abbay on iPhone: the mini player opens into the full player, tinted by the book's cover, while Pride and Prejudice plays."
+           label_pt="O Abbay no iPhone: o mini player se abre no player completo, com a cor da capa do livro, enquanto Orgulho e Preconceito toca." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- LibriVox -->
+  <section class="ab-feature" aria-labelledby="f-librivox">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Free, forever</span><span class="i18n" lang="pt-BR">Grátis, para sempre</span></p>
+        <h2 id="f-librivox">
+          <span class="i18n" lang="en">A whole library of classics</span>
+          <span class="i18n" lang="pt-BR">Uma biblioteca inteira de clássicos</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Browse what's popular on LibriVox or search for any title or author. Every book is in the public domain and read by volunteers, so it costs nothing, today and always.</span>
+          <span class="i18n" lang="pt-BR">Veja o que está em alta no LibriVox ou busque qualquer título ou autor. Todos os livros são de domínio público e lidos por voluntários, então não custam nada, hoje e sempre.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-phone.html clip="search"
+           label_en="Searching LibriVox: the Popular grid, a book's page, and its download starting."
+           label_pt="Buscando no LibriVox: a grade de populares, a página de um livro e o download começando." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Offline -->
+  <section class="ab-feature ab-feature--flip" aria-labelledby="f-offline">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Offline</span><span class="i18n" lang="pt-BR">Offline</span></p>
+        <h2 id="f-offline">
+          <span class="i18n" lang="en">Download once, listen anywhere</span>
+          <span class="i18n" lang="pt-BR">Baixe uma vez, ouça em qualquer lugar</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Books are saved on your iPhone, so they play on a plane, on the subway or far from any signal. No need to wait, either: start listening while the rest downloads.</span>
+          <span class="i18n" lang="pt-BR">Os livros ficam salvos no seu iPhone e tocam no avião, no metrô ou longe de qualquer sinal. E nem precisa esperar: comece a ouvir enquanto o resto baixa.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-phone.html clip="library"
+           label_en="The library: a Continue card for the book in progress above a grid of downloaded covers."
+           label_pt="A biblioteca: o card Continuar com o livro em andamento, acima de uma grade de capas baixadas." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapters -->
+  <section class="ab-feature" aria-labelledby="f-chapters">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Your pace</span><span class="i18n" lang="pt-BR">No seu ritmo</span></p>
+        <h2 id="f-chapters">
+          <span class="i18n" lang="en">Chapters, speed and your place, all kept</span>
+          <span class="i18n" lang="pt-BR">Capítulos, velocidade e o seu ponto, tudo guardado</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Jump to any chapter, slow the narrator down or speed things up, and come back to exactly where you stopped, in every book.</span>
+          <span class="i18n" lang="pt-BR">Pule para qualquer capítulo, deixe a narração mais lenta ou mais rápida e volte exatamente de onde parou, em cada livro.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-phone.html clip="chapters"
+           label_en="The player's chapter panel opening, and a chapter being chosen."
+           label_pt="O painel de capítulos do player se abrindo e um capítulo sendo escolhido." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- More -->
+  <section class="ab-more" aria-labelledby="f-more">
+    <div class="ab-container">
+      <h2 id="f-more" class="visually-hidden"><span class="i18n" lang="en">And also</span><span class="i18n" lang="pt-BR">E também</span></h2>
+      <div class="ab-cards">
+        <article class="ab-card reveal">
+          <svg class="ab-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2h9A1.5 1.5 0 0 1 21 9.5v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 11v5m0 0l-2-2m2 2l2-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3><span class="i18n" lang="en">Your own audiobooks, too</span><span class="i18n" lang="pt-BR">Seus próprios audiolivros também</span></h3>
+          <p>
+            <span class="i18n" lang="en">Already have audiobook files? Pick them from the Files app and they sit right next to your LibriVox books, with the same player, chapters and all.</span>
+            <span class="i18n" lang="pt-BR">Já tem arquivos de audiolivro? Escolha pelo app Arquivos e eles ficam junto dos seus livros do LibriVox, com o mesmo player, capítulos e tudo.</span>
+          </p>
+        </article>
+        <article class="ab-card reveal">
+          <svg class="ab-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.5c0 4.3-2.9 8-7 9.5-4.1-1.5-7-5.2-7-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3><span class="i18n" lang="en">No account. No ads. No tracking.</span><span class="i18n" lang="pt-BR">Sem conta. Sem anúncios. Sem rastreamento.</span></h3>
+          <p>
+            <span class="i18n" lang="en">Abbay doesn't ask who you are and collects nothing about you. Everything stays on your iPhone.</span>
+            <span class="i18n" lang="pt-BR">O Abbay não pergunta quem você é e não coleta nada sobre você. Tudo fica no seu iPhone.</span>
+            <a href="{{ '/abbay/privacy-policy/' | relative_url }}"><span class="i18n" lang="en">Read the privacy policy</span><span class="i18n" lang="pt-BR">Leia a política de privacidade</span></a>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the developer -->
+  <section class="ab-about" aria-labelledby="about-title">
+    <div class="ab-container">
+      <div class="ab-about__card reveal">
+        <h2 id="about-title"><span class="i18n" lang="en">About the developer</span><span class="i18n" lang="pt-BR">Sobre o desenvolvedor</span></h2>
+        <p class="ab-about__note">
+          <span class="i18n" lang="en">They say if an app is free, you're the product. Here it's the other way around: <em>I'm</em> the product. Abbay is free, with no ads and no tracking. If you enjoy it, I'd love to hear from you — I'm always happy to meet new people.</span>
+          <span class="i18n" lang="pt-BR">Dizem que, se um app é grátis, o produto é você. Aqui é o contrário: o produto <em>sou eu</em>. O Abbay é grátis, sem anúncios e sem rastreamento. Se você gostar, adoraria ouvir de você — sempre gosto de conhecer gente nova.</span>
+        </p>
+        <p class="ab-about__sign">Edson Toma</p>
+        <a class="ab-button" href="https://www.linkedin.com/in/edyuto" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.76-2.06 4.02 0 4.76 2.64 4.76 6.08V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
+          <span class="i18n" lang="en">Say hi on LinkedIn</span><span class="i18n" lang="pt-BR">Diga oi no LinkedIn</span>
+          <span class="visually-hidden"><span class="i18n" lang="en">(opens in a new tab)</span><span class="i18n" lang="pt-BR">(abre em uma nova aba)</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ab-credits">
+    <div class="ab-container">
+      <p>
+        <span class="i18n" lang="en">The audiobooks come from <a href="https://librivox.org" rel="noopener">LibriVox</a>, whose volunteers record public-domain books and release them to the public domain. Abbay is an independent app, not affiliated with LibriVox.</span>
+        <span class="i18n" lang="pt-BR">Os audiolivros vêm do <a href="https://librivox.org" rel="noopener">LibriVox</a>, cujos voluntários gravam livros de domínio público e os liberam em domínio público. O Abbay é um app independente, sem vínculo com o LibriVox.</span>
+      </p>
+      <p><a href="{{ '/abbay/privacy-policy/' | relative_url }}"><span class="i18n" lang="en">Privacy policy</span><span class="i18n" lang="pt-BR">Política de privacidade</span></a></p>
+    </div>
+  </section>
+</main>
