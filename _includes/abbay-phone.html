@@ -1,0 +1,35 @@
+{%- comment -%}
+  A CSS-drawn iPhone with a looping, muted clip of the app inside.
+  include.clip: the clip's base name (assets/abbay/video/<clip>-<en|pt>.mp4 and <clip>-<en|pt>.png)
+  include.label_en / include.label_pt: what the clip shows, for screen readers.
+  include.eager: "true" for the hero (loaded at once); the others load when they come near the viewport.
+{%- endcomment -%}
+{%- assign base = '/assets/abbay/video/' | append: include.clip | relative_url -%}
+<figure class="phone{% if include.eager == 'true' %} phone--hero{% endif %}">
+  <div class="phone__frame">
+    <div class="phone__screen">
+      <video class="phone__video js-video"
+             muted playsinline loop preload="none"
+             width="332" height="720"
+             poster="{{ base }}-en.png"
+             data-base="{{ base }}"
+             data-eager="{{ include.eager | default: 'false' }}"
+             aria-label="{{ include.label_en }}"
+             data-label-en="{{ include.label_en }}"
+             data-label-pt="{{ include.label_pt }}"></video>
+      <noscript>
+        <video class="phone__video" muted playsinline loop autoplay preload="metadata"
+               width="332" height="720" poster="{{ base }}-en.png" aria-label="{{ include.label_en }}">
+          <source src="{{ base }}-en.mp4" type="video/mp4">
+        </video>
+      </noscript>
+    </div>
+  </div>
+  <button class="phone__toggle" type="button" hidden
+          data-label-pause-en="Pause video" data-label-pause-pt="Pausar vídeo"
+          data-label-play-en="Play video" data-label-play-pt="Reproduzir vídeo"
+          aria-label="Pause video">
+    <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+    <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2.5v11a.8.8 0 0 0 1.2.7l9-5.5a.8.8 0 0 0 0-1.4l-9-5.5A.8.8 0 0 0 4 2.5z"/></svg>
+  </button>
+</figure>
