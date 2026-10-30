@@ -40,7 +40,7 @@ extra_js:
 
 # Abbay Privacy Policy
 
-**Effective date:** October 24, 2026<br>
+**Effective date:** October 30, 2026<br>
 **Developer:** Mobyle<br>
 **Contact:** [mobyleofficial@gmail.com](mailto:mobyleofficial@gmail.com)
 
@@ -54,6 +54,7 @@ Abbay keeps everything it needs on your iPhone, and none of it is sent to us:
 - **Books you import:** Abbay plays files where they already are (for example in Files or iCloud Drive) and keeps a reference so it can open them again. It does not upload or copy them anywhere.
 - **LibriVox downloads:** audiobooks you download are saved in the app's storage on your device.
 - **Settings:** your preferences, stored on your device.
+- **Read-along text (experimental):** if you turn on read-along, the text Abbay makes from a book's audio is saved on your device for that book, with the language it is in. It is deleted with the book, or when you turn read-along off.
 
 Deleting Abbay deletes all of this.
 
@@ -63,7 +64,15 @@ When you search for, stream or download a free public-domain audiobook, Abbay co
 
 As with any website, those services receive your device's IP address and standard request information. Their own policies apply, including the [Internet Archive's terms and privacy policy](https://archive.org/about/terms.php), which hosts LibriVox's audio.
 
-Books you import from your own files never cause any network request.
+Books you import from your own files never cause any network request, except, if you use read-along, iOS downloading a speech model from Apple (see below).
+
+## Read-along (experimental)
+
+Read-along is off by default. When you turn it on, Abbay shows the text of the audiobook as it plays.
+
+- The text is made **on your device** by Apple's speech recognition, from the audiobook's own audio. The audio and the text never leave your device and are never sent to us or to anyone else.
+- Abbay never uses your microphone and never listens to you. No speech-recognition permission is needed.
+- The first time read-along is used in a language, iOS may download Apple's speech model for that language. That download comes from Apple and contains nothing about your books.
 
 ## Siri, Shortcuts, Spotlight and CarPlay
 
@@ -92,7 +101,7 @@ Questions about this policy: [mobyleofficial@gmail.com](mailto:mobyleofficial@gm
 
 # Política de Privacidade do Abbay
 
-**Data de vigência:** 24 de outubro de 2026<br>
+**Data de vigência:** 30 de outubro de 2026<br>
 **Desenvolvedor:** Mobyle<br>
 **Contato:** [mobyleofficial@gmail.com](mailto:mobyleofficial@gmail.com)
 
@@ -106,6 +115,7 @@ Tudo o que o Abbay precisa fica no seu iPhone, e nada disso é enviado para nós
 - **Livros importados:** o Abbay reproduz os arquivos onde eles já estão (por exemplo, no app Arquivos ou no iCloud Drive) e guarda uma referência para abri-los de novo. Ele não envia nem copia esses arquivos para lugar nenhum.
 - **Downloads do LibriVox:** os audiolivros baixados ficam salvos no armazenamento do app, no seu aparelho.
 - **Ajustes:** suas preferências, guardadas no seu aparelho.
+- **Texto da leitura acompanhada (experimental):** se você ativar a leitura acompanhada, o texto que o Abbay gera a partir do áudio de um livro fica salvo no seu aparelho, com o idioma dele. Ele é apagado junto com o livro ou quando você desativa a leitura acompanhada.
 
 Apagar o Abbay apaga tudo isso.
 
@@ -115,7 +125,15 @@ Quando você busca, ouve ou baixa um audiolivro gratuito de domínio público, o
 
 Como acontece com qualquer site, esses serviços recebem o endereço IP do seu aparelho e as informações padrão da solicitação. Valem as políticas deles, incluindo os [termos e a política de privacidade do Internet Archive](https://archive.org/about/terms.php), que hospeda o áudio do LibriVox.
 
-Livros importados dos seus próprios arquivos nunca geram nenhuma solicitação de rede.
+Livros importados dos seus próprios arquivos nunca geram nenhuma solicitação de rede, exceto, se você usar a leitura acompanhada, o download de um modelo de fala da Apple feito pelo iOS (veja abaixo).
+
+## Leitura acompanhada (experimental)
+
+A leitura acompanhada vem desativada. Quando você a ativa, o Abbay mostra o texto do audiolivro enquanto ele toca.
+
+- O texto é gerado **no seu aparelho** pelo reconhecimento de fala da Apple, a partir do próprio áudio do audiolivro. O áudio e o texto nunca saem do seu aparelho e nunca são enviados para nós nem para ninguém.
+- O Abbay nunca usa o seu microfone e nunca escuta você. Nenhuma permissão de reconhecimento de fala é necessária.
+- Na primeira vez que a leitura acompanhada é usada em um idioma, o iOS pode baixar o modelo de fala da Apple para esse idioma. Esse download vem da Apple e não contém nada sobre os seus livros.
 
 ## Siri, Atalhos, Spotlight e CarPlay
 
