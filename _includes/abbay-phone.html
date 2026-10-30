@@ -5,22 +5,25 @@
   include.eager: "true" for the hero (loaded at once); the others load when they come near the viewport.
 {%- endcomment -%}
 {%- assign base = '/assets/abbay/video/' | append: include.clip | relative_url -%}
+{%- comment -%} Changes with every build, so a redeployed clip isn't served from a browser's cache. {%- endcomment -%}
+{%- assign v = site.time | date: '%s' -%}
 <figure class="phone{% if include.eager == 'true' %} phone--hero{% endif %}">
   <div class="phone__frame">
     <div class="phone__screen">
       <video class="phone__video js-video"
              muted playsinline loop preload="none"
              width="332" height="720"
-             poster="{{ base }}-en.png"
+             poster="{{ base }}-en.png?v={{ v }}"
              data-base="{{ base }}"
+             data-version="{{ v }}"
              data-eager="{{ include.eager | default: 'false' }}"
              aria-label="{{ include.label_en }}"
              data-label-en="{{ include.label_en }}"
              data-label-pt="{{ include.label_pt }}"></video>
       <noscript>
         <video class="phone__video" muted playsinline loop autoplay preload="metadata"
-               width="332" height="720" poster="{{ base }}-en.png" aria-label="{{ include.label_en }}">
-          <source src="{{ base }}-en.mp4" type="video/mp4">
+               width="332" height="720" poster="{{ base }}-en.png?v={{ v }}" aria-label="{{ include.label_en }}">
+          <source src="{{ base }}-en.mp4?v={{ v }}" type="video/mp4">
         </video>
       </noscript>
     </div>
