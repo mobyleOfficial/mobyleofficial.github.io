@@ -2,6 +2,7 @@
 layout: default
 title: Abbay Privacy Policy - Mobyle
 permalink: /abbay/privacy-policy/
+github_url: https://github.com/mobyleOfficial/AbbayiOS
 ---
 
 <main class="policy">
