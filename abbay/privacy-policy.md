@@ -3,10 +3,40 @@ layout: default
 title: Abbay Privacy Policy - Mobyle
 permalink: /abbay/privacy-policy/
 github_url: https://github.com/mobyleOfficial/AbbayiOS
+extra_css:
+  - /assets/abbay/css/lang.css
+extra_js:
+  - /assets/abbay/js/lang.js
 ---
+<script>
+  /* Pick the language before the first paint, as on the landing page (lang.js does the rest). */
+  (function () {
+    var lang = null;
+    try { lang = localStorage.getItem('abbay.lang'); } catch (e) {}
+    if (lang !== 'en' && lang !== 'pt') {
+      var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+      lang = 'en';
+      for (var i = 0; i < list.length; i++) {
+        var code = String(list[i]).toLowerCase();
+        if (code.indexOf('pt') === 0) { lang = 'pt'; break; }
+        if (code.indexOf('en') === 0) break;
+      }
+    }
+    if (lang === 'pt') { document.documentElement.setAttribute('data-lang', 'pt'); document.documentElement.lang = 'pt-BR'; }
+  })();
+</script>
+<!-- Without JavaScript both languages show, one after the other, and the switch is hidden. -->
+<noscript><style>.policy .i18n { display: block !important; } .lang-switch { display: none !important; }</style></noscript>
 
-<main class="policy">
+<main class="policy" data-title-en="Abbay Privacy Policy - Mobyle" data-title-pt="Política de Privacidade do Abbay - Mobyle">
 <div class="container" markdown="1">
+
+<div class="lang-switch" role="group" aria-label="Language / Idioma">
+  <button type="button" class="lang-switch__btn" data-set-lang="en" aria-pressed="true" lang="en" title="English">EN</button>
+  <button type="button" class="lang-switch__btn" data-set-lang="pt" aria-pressed="false" lang="pt-BR" title="Português (Brasil)">PT-BR</button>
+</div>
+
+<div class="i18n" lang="en" markdown="1">
 
 # Abbay Privacy Policy
 
@@ -55,7 +85,10 @@ If this policy changes, we will update this page and its effective date.
 
 Questions about this policy: [mobyleofficial@gmail.com](mailto:mobyleofficial@gmail.com).
 
----
+
+</div>
+
+<div class="i18n" lang="pt-BR" markdown="1">
 
 # Política de Privacidade do Abbay
 
@@ -103,6 +136,8 @@ Se esta política mudar, atualizaremos esta página e a data de vigência.
 ## Contato
 
 Dúvidas sobre esta política: [mobyleofficial@gmail.com](mailto:mobyleofficial@gmail.com).
+
+</div>
 
 </div>
 </main>
