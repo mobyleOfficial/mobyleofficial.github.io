@@ -1,6 +1,7 @@
 {%- comment -%}
-  A CSS-drawn iPhone with a looping, muted clip of the app inside.
-  include.clip: the clip's base name (assets/abbay/video/<clip>-<en|pt>.mp4 and <clip>-<en|pt>.png)
+  A CSS-drawn iPhone with a looping clip of the app inside: an animated GIF, with its still poster while
+  paused, off screen or with Reduce Motion.
+  include.clip: the clip's base name (assets/abbay/video/<clip>-<en|pt>.gif and <clip>-<en|pt>.png)
   include.label_en / include.label_pt: what the clip shows, for screen readers.
   include.eager: "true" for the hero (loaded at once); the others load when they come near the viewport.
 {%- endcomment -%}
@@ -10,21 +11,17 @@
 <figure class="phone{% if include.eager == 'true' %} phone--hero{% endif %}">
   <div class="phone__frame">
     <div class="phone__screen">
-      <video class="phone__video js-video"
-             muted playsinline loop preload="none"
-             width="332" height="720"
-             poster="{{ base }}-en.png?v={{ v }}"
-             data-base="{{ base }}"
-             data-version="{{ v }}"
-             data-eager="{{ include.eager | default: 'false' }}"
-             aria-label="{{ include.label_en }}"
-             data-label-en="{{ include.label_en }}"
-             data-label-pt="{{ include.label_pt }}"></video>
+      <img class="phone__video js-clip"
+           src="{{ base }}-en.png?v={{ v }}"
+           width="332" height="720"
+           alt="{{ include.label_en }}"
+           data-base="{{ base }}"
+           data-version="{{ v }}"
+           data-eager="{{ include.eager | default: 'false' }}"
+           data-label-en="{{ include.label_en }}"
+           data-label-pt="{{ include.label_pt }}">
       <noscript>
-        <video class="phone__video" muted playsinline loop autoplay preload="metadata"
-               width="332" height="720" poster="{{ base }}-en.png?v={{ v }}" aria-label="{{ include.label_en }}">
-          <source src="{{ base }}-en.mp4?v={{ v }}" type="video/mp4">
-        </video>
+        <img class="phone__video" src="{{ base }}-en.gif?v={{ v }}" width="332" height="720" alt="{{ include.label_en }}">
       </noscript>
     </div>
   </div>

@@ -58,93 +58,67 @@
   }
 
   // ---------- Clips ----------
+  // Each clip is an animated GIF in an <img>. "Paused" (by the button, off screen, a hidden tab or
+  // Reduce Motion) shows the clip's still poster instead, since a GIF can't be paused.
 
-  function Clip(video) {
-    this.video = video;
-    this.base = video.getAttribute('data-base');
+  function Clip(img) {
+    this.img = img;
+    this.base = img.getAttribute('data-base');
     // The build's version, so a redeployed clip isn't served from a browser's cache.
-    var version = video.getAttribute('data-version');
+    var version = img.getAttribute('data-version');
     this.query = version ? '?v=' + version : '';
-    this.eager = video.getAttribute('data-eager') === 'true';
-    this.loadedLang = null;
+    this.eager = img.getAttribute('data-eager') === 'true';
     this.visible = false;
     this.userPaused = false;
-    this.toggle = video.closest('.phone').querySelector('.phone__toggle');
+    this.toggle = img.closest('.phone').querySelector('.phone__toggle');
     var self = this;
     if (this.toggle) {
       this.toggle.hidden = false;
       this.toggle.addEventListener('click', function () {
-        if (self.video.paused) {
-          self.userPaused = false;
-          self.load();
-          self.play();
-        } else {
-          self.userPaused = true;
-          self.video.pause();
-        }
+        self.userPaused = !self.userPaused;
+        self.render();
       });
     }
-    video.addEventListener('play', function () { self.updateToggle(); });
-    video.addEventListener('pause', function () { self.updateToggle(); });
-    this.updateToggle();
   }
 
-  Clip.prototype.wantsAutoplay = function () {
-    return !reduceMotion.matches && !this.userPaused;
+  Clip.prototype.url = function (ext) {
+    return this.base + '-' + lang + '.' + ext + this.query;
   };
 
-  Clip.prototype.load = function () {
-    if (this.loadedLang === lang) return;
-    var v = this.video;
-    var wasPlaying = !v.paused;
-    while (v.firstChild) v.removeChild(v.firstChild);
-    var source = document.createElement('source');
-    source.src = this.base + '-' + lang + '.mp4' + this.query;
-    source.type = 'video/mp4';
-    v.appendChild(source);
-    v.poster = this.base + '-' + lang + '.png' + this.query;
-    v.preload = 'metadata';
-    v.load();
-    this.loadedLang = lang;
-    if (wasPlaying) this.play();
+  Clip.prototype.isPlaying = function () {
+    return this.visible && !document.hidden && !reduceMotion.matches && !this.userPaused;
   };
 
-  Clip.prototype.play = function () {
-    var promise = this.video.play();
-    if (promise && promise.catch) promise.catch(function () { /* autoplay refused: poster stays */ });
+  /** Fetches the current language's GIF ahead of time, so it animates at once when shown. */
+  Clip.prototype.prefetch = function () {
+    if (reduceMotion.matches) return;
+    var image = new Image();
+    image.src = this.url('gif');
+  };
+
+  Clip.prototype.render = function () {
+    var src = this.url(this.isPlaying() ? 'gif' : 'png');
+    if (this.img.getAttribute('src') !== src) this.img.setAttribute('src', src);
+    this.img.alt = this.img.getAttribute('data-label-' + lang) || this.img.alt;
+    if (this.toggle) {
+      var paused = !this.isPlaying();
+      this.toggle.setAttribute('data-state', paused ? 'paused' : 'playing');
+      this.toggle.setAttribute('aria-label', this.toggle.getAttribute('data-label-' + (paused ? 'play' : 'pause') + '-' + lang));
+    }
   };
 
   Clip.prototype.setLang = function () {
-    var v = this.video;
-    v.setAttribute('aria-label', v.getAttribute('data-label-' + lang) || v.getAttribute('aria-label'));
-    if (this.loadedLang) {
-      this.load();
-    } else {
-      v.poster = this.base + '-' + lang + '.png' + this.query;
-    }
-    this.updateToggle();
-  };
-
-  Clip.prototype.updateToggle = function () {
-    if (!this.toggle) return;
-    var paused = this.video.paused;
-    this.toggle.setAttribute('data-state', paused ? 'paused' : 'playing');
-    this.toggle.setAttribute('aria-label', this.toggle.getAttribute('data-label-' + (paused ? 'play' : 'pause') + '-' + lang));
+    this.render();
   };
 
   Clip.prototype.onVisibility = function (visible) {
     this.visible = visible;
-    if (visible) {
-      this.load();
-      if (this.wantsAutoplay()) this.play();
-    } else if (!this.video.paused) {
-      this.video.pause();
-    }
+    this.render();
   };
 
   var clips = [];
-  var videos = document.querySelectorAll('video.js-video');
-  for (var i = 0; i < videos.length; i++) clips.push(new Clip(videos[i]));
+  var images = document.querySelectorAll('img.js-clip');
+  for (var i = 0; i < images.length; i++) clips.push(new Clip(images[i]));
 
   applyLang(lang, false);
 
@@ -156,42 +130,35 @@
   });
 
   if (hasIO) {
-    // Fetch a clip shortly before it scrolls in; play only while it is on screen.
+    // Fetch a clip's GIF shortly before it scrolls in; animate it only while it is on screen.
     var preload = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        clips.forEach(function (clip) { if (clip.video === entry.target) clip.load(); });
-        preload.unobserve(entry.target);
+        clips.forEach(function (clip) { if (clip.img === entry.target) clip.prefetch(); });
       });
     }, { rootMargin: '300px 0px' });
     var playback = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        clips.forEach(function (clip) { if (clip.video === entry.target) clip.onVisibility(entry.isIntersecting); });
+        clips.forEach(function (clip) { if (clip.img === entry.target) clip.onVisibility(entry.isIntersecting); });
       });
     }, { threshold: 0.25 });
     clips.forEach(function (clip) {
-      if (clip.eager) clip.load();
-      preload.observe(clip.video);
-      playback.observe(clip.video);
+      if (clip.eager) clip.prefetch();
+      preload.observe(clip.img);
+      playback.observe(clip.img);
     });
   } else {
-    clips.forEach(function (clip) { clip.load(); if (clip.wantsAutoplay()) clip.play(); });
+    clips.forEach(function (clip) { clip.onVisibility(true); });
   }
 
-  // Pause everything when the tab is hidden; resume the visible ones when it comes back.
+  // A hidden tab shows the posters; the visible clips animate again when it comes back.
   document.addEventListener('visibilitychange', function () {
-    clips.forEach(function (clip) {
-      if (document.hidden) clip.video.pause();
-      else if (clip.visible && clip.wantsAutoplay()) clip.play();
-    });
+    clips.forEach(function (clip) { clip.render(); });
   });
 
-  // Turning Reduce Motion on stops the clips; turning it off lets the visible ones play.
+  // Turning Reduce Motion on stops the clips (posters); turning it off lets the visible ones animate.
   var onMotionChange = function () {
-    clips.forEach(function (clip) {
-      if (reduceMotion.matches) clip.video.pause();
-      else if (clip.visible && !clip.userPaused) clip.play();
-    });
+    clips.forEach(function (clip) { clip.render(); });
     if (reduceMotion.matches) revealAll();
   };
   if (reduceMotion.addEventListener) reduceMotion.addEventListener('change', onMotionChange);
