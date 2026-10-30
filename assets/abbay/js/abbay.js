@@ -62,6 +62,9 @@
   function Clip(video) {
     this.video = video;
     this.base = video.getAttribute('data-base');
+    // The build's version, so a redeployed clip isn't served from a browser's cache.
+    var version = video.getAttribute('data-version');
+    this.query = version ? '?v=' + version : '';
     this.eager = video.getAttribute('data-eager') === 'true';
     this.loadedLang = null;
     this.visible = false;
@@ -96,10 +99,10 @@
     var wasPlaying = !v.paused;
     while (v.firstChild) v.removeChild(v.firstChild);
     var source = document.createElement('source');
-    source.src = this.base + '-' + lang + '.mp4';
+    source.src = this.base + '-' + lang + '.mp4' + this.query;
     source.type = 'video/mp4';
     v.appendChild(source);
-    v.poster = this.base + '-' + lang + '.png';
+    v.poster = this.base + '-' + lang + '.png' + this.query;
     v.preload = 'metadata';
     v.load();
     this.loadedLang = lang;
@@ -117,7 +120,7 @@
     if (this.loadedLang) {
       this.load();
     } else {
-      v.poster = this.base + '-' + lang + '.png';
+      v.poster = this.base + '-' + lang + '.png' + this.query;
     }
     this.updateToggle();
   };
