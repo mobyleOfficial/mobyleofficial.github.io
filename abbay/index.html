@@ -9,6 +9,10 @@ extra_css:
 extra_js:
   - /assets/abbay/js/abbay.js
 github_url: https://github.com/mobyleOfficial/AbbayiOS
+# The App Store Support URL points at this page; the #support section below is what it promises.
+support_form_url_en: https://forms.gle/CXPihChmJakqjkTdA
+support_form_url_pt: https://forms.gle/C3vpmv7hiMXATCTH6
+support_email: mobyleofficial@gmail.com
 ---
 {%- comment -%}
   Two languages live side by side: every piece of text comes in an `.i18n` pair, `lang="en"` and
@@ -204,13 +208,48 @@ github_url: https://github.com/mobyleOfficial/AbbayiOS
     </div>
   </section>
 
+  <!-- Support -->
+  <section class="ab-about ab-support" id="support" aria-labelledby="support-title">
+    <div class="ab-container">
+      <div class="ab-about__card reveal">
+        <h2 id="support-title"><span class="i18n" lang="en">Support</span><span class="i18n" lang="pt-BR">Suporte</span></h2>
+        <p class="ab-about__note">
+          <span class="i18n" lang="en">Found a bug, have a question or an idea for Abbay? Tell me through the form and I'll get back to you.</span>
+          <span class="i18n" lang="pt-BR">Encontrou um problema, tem uma dúvida ou uma ideia para o Abbay? Me conte pelo formulário que eu respondo.</span>
+        </p>
+        {%- comment -%} One form per language; the wrapper span (not the button) carries .i18n, since the
+          switch's `display: revert` would undo the button's inline-flex. {%- endcomment %}
+        <span class="i18n" lang="en">
+          <a class="ab-button" href="{{ page.support_form_url_en }}" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            Contact support<span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </span>
+        <span class="i18n" lang="pt-BR">
+          <a class="ab-button" href="{{ page.support_form_url_pt }}" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            Falar com o suporte<span class="visually-hidden"> (abre em uma nova aba)</span>
+          </a>
+        </span>
+        <p class="ab-support__alt">
+          <span class="i18n" lang="en">Prefer email? Write to</span><span class="i18n" lang="pt-BR">Prefere email? Escreva para</span>
+          <a href="mailto:{{ page.support_email }}?subject=Abbay">{{ page.support_email }}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <section class="ab-credits">
     <div class="ab-container">
       <p>
         <span class="i18n" lang="en">The audiobooks come from <a href="https://librivox.org" rel="noopener">LibriVox</a>, whose volunteers record public-domain books and release them to the public domain. Abbay is an independent app, not affiliated with LibriVox.</span>
         <span class="i18n" lang="pt-BR">Os audiolivros vêm do <a href="https://librivox.org" rel="noopener">LibriVox</a>, cujos voluntários gravam livros de domínio público e os liberam em domínio público. O Abbay é um app independente, sem vínculo com o LibriVox.</span>
       </p>
-      <p><a href="{{ '/abbay/privacy-policy/' | relative_url }}"><span class="i18n" lang="en">Privacy policy</span><span class="i18n" lang="pt-BR">Política de privacidade</span></a></p>
+      <p>
+        <a href="#support"><span class="i18n" lang="en">Support</span><span class="i18n" lang="pt-BR">Suporte</span></a>
+        ·
+        <a href="{{ '/abbay/privacy-policy/' | relative_url }}"><span class="i18n" lang="en">Privacy policy</span><span class="i18n" lang="pt-BR">Política de privacidade</span></a>
+      </p>
     </div>
   </section>
 </main>

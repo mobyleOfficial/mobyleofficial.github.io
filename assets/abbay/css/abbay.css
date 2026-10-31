@@ -235,6 +235,11 @@
 .ab-about__sign { margin: 14px 0 22px; color: var(--secondary-text); font-size: 0.95rem; }
 .ab-about__sign::before { content: "— "; }
 
+/* Support reuses the About card; it sits right under it, so it drops the top padding. */
+.ab-support { padding-top: 0; }
+.ab-support .ab-about__note { margin-bottom: 22px; }
+.ab-support__alt { margin: 18px 0 0; color: var(--secondary-text); font-size: 0.95rem; }
+
 .ab-button {
   display: inline-flex;
   align-items: center;
