@@ -42,7 +42,7 @@ extra_js:
 
 **Effective date:** October 30, 2026<br>
 **Developer:** Mobyle<br>
-**Contact:** [mobyleofficial@gmail.com](mailto:mobyleofficial@gmail.com)
+**Contact:** [support@mobyleapps.com](mailto:support@mobyleapps.com)
 
 This policy covers Abbay for iPhone and CarPlay. In short: **Abbay does not collect any data about you.** There are no accounts, no analytics, no advertising, no tracking and no third-party SDKs.
 
@@ -92,7 +92,7 @@ If this policy changes, we will update this page and its effective date.
 
 ## Contact
 
-Questions about this policy: [mobyleofficial@gmail.com](mailto:mobyleofficial@gmail.com).
+Questions about this policy: [support@mobyleapps.com](mailto:support@mobyleapps.com).
 
 
 </div>
@@ -103,7 +103,7 @@ Questions about this policy: [mobyleofficial@gmail.com](mailto:mobyleofficial@gm
 
 **Data de vigência:** 30 de outubro de 2026<br>
 **Desenvolvedor:** Mobyle<br>
-**Contato:** [mobyleofficial@gmail.com](mailto:mobyleofficial@gmail.com)
+**Contato:** [support@mobyleapps.com](mailto:support@mobyleapps.com)
 
 Esta política se aplica ao Abbay para iPhone e CarPlay. Em resumo: **o Abbay não coleta nenhum dado sobre você.** Não há contas, análises, anúncios, rastreamento nem SDKs de terceiros.
 
@@ -153,7 +153,7 @@ Se esta política mudar, atualizaremos esta página e a data de vigência.
 
 ## Contato
 
-Dúvidas sobre esta política: [mobyleofficial@gmail.com](mailto:mobyleofficial@gmail.com).
+Dúvidas sobre esta política: [support@mobyleapps.com](mailto:support@mobyleapps.com).
 
 </div>
 
