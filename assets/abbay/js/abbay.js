@@ -125,8 +125,6 @@
   document.addEventListener('click', function (event) {
     var button = event.target.closest('[data-set-lang]');
     if (button) applyLang(button.getAttribute('data-set-lang'), true);
-    var placeholder = event.target.closest('a[data-placeholder="true"]');
-    if (placeholder) event.preventDefault(); // TODO: remove with the App Store placeholder
   });
 
   if (hasIO) {

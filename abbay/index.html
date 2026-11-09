@@ -74,14 +74,11 @@ support_email: support@mobyleapps.com
           <span class="i18n" lang="en">Thousands of classics read by LibriVox volunteers. Download them, listen offline and pick up right where you left off.</span>
           <span class="i18n" lang="pt-BR">Milhares de clássicos lidos pelos voluntários do LibriVox. Baixe, ouça offline e continue exatamente de onde parou.</span>
         </p>
-        <!-- TODO: Abbay isn't on the App Store yet. When it is, point href at its App Store page
-             and swap this placeholder for Apple's official "Download on the App Store" badge. -->
-        <a class="store-badge" href="#" data-placeholder="true">
-          <svg class="store-badge__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v11m0 0l-4.5-4.5M12 14l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="store-badge__text">
-            <span class="store-badge__small"><span class="i18n" lang="en">Coming soon on the</span><span class="i18n" lang="pt-BR">Em breve na</span></span>
-            <span class="store-badge__big">App Store</span>
-          </span>
+        <!-- Apple's official badge (developer.apple.com, US-UK artwork, unmodified), linking to Abbay's
+             App Store page without a country, so each visitor lands on their own store. -->
+        <a class="store-badge" href="https://apps.apple.com/app/abbay/id6826877030">
+          <img src="{{ '/assets/abbay/img/download-on-the-app-store.svg' | relative_url }}" width="162" height="54" alt="">
+          <span class="visually-hidden"><span class="i18n" lang="en">Download on the App Store</span><span class="i18n" lang="pt-BR">Baixar na App Store</span></span>
         </a>
         <p class="ab-hero__note">
           <span class="i18n" lang="en">For iPhone. Free, no account needed.</span>
