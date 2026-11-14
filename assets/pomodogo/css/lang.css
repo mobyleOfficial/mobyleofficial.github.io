@@ -1,0 +1,51 @@
+/* Pomodogo pages' language switch (EN / PT-BR), used by the privacy policy and the terms.
+   Text comes in `.i18n` pairs; lang.js sets <html data-lang="pt"> for Portuguese. */
+:root { --pomodogo: #FF9F43; }
+
+/* ---------- Language pairs ---------- */
+/* English by default (and without JavaScript). */
+.i18n[lang="pt-BR"] { display: none; }
+html[data-lang="pt"] .i18n[lang="en"] { display: none; }
+html[data-lang="pt"] .i18n[lang="pt-BR"] { display: revert; }
+
+/* ---------- Switch ---------- */
+.lang-switch {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+}
+.lang-switch__btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--secondary-text);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  min-width: 52px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.lang-switch__btn:hover { color: var(--light-text); }
+.lang-switch__btn[aria-pressed="true"] {
+  background: var(--pomodogo);
+  color: #1a0f04;
+}
+.lang-switch__btn:focus-visible {
+  outline: 3px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* The switch sits at the top right of the text. */
+.policy .lang-switch {
+  display: flex;
+  width: max-content;
+  margin: 0 0 8px auto;
+}
