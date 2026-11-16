@@ -44,7 +44,7 @@ extra_js:
 **Developer:** Mobyle<br>
 **Contact:** [support@mobyleapps.com](mailto:support@mobyleapps.com)
 
-This policy covers Abbay for iPhone and CarPlay. In short: **Abbay does not collect any data about you.** There are no accounts, no analytics, no advertising, no tracking and no third-party SDKs.
+This policy covers Abbay for iPhone and CarPlay. The Android app has [its own policy]({{ '/abbay/android/privacy-policy/' | relative_url }}). In short: **Abbay does not collect any data about you.** There are no accounts, no analytics, no advertising, no tracking and no third-party SDKs.
 
 ## What stays on your device
 
@@ -105,7 +105,7 @@ Questions about this policy: [support@mobyleapps.com](mailto:support@mobyleapps.
 **Desenvolvedor:** Mobyle<br>
 **Contato:** [support@mobyleapps.com](mailto:support@mobyleapps.com)
 
-Esta política se aplica ao Abbay para iPhone e CarPlay. Em resumo: **o Abbay não coleta nenhum dado sobre você.** Não há contas, análises, anúncios, rastreamento nem SDKs de terceiros.
+Esta política se aplica ao Abbay para iPhone e CarPlay. O app para Android tem [a sua própria política]({{ '/abbay/android/privacy-policy/' | relative_url }}). Em resumo: **o Abbay não coleta nenhum dado sobre você.** Não há contas, análises, anúncios, rastreamento nem SDKs de terceiros.
 
 ## O que fica no seu aparelho
 
