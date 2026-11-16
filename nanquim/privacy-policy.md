@@ -41,7 +41,7 @@ extra_js:
 
 # Nanquim Privacy Policy
 
-**Effective date:** November 12, 2026<br>
+**Effective date:** November 16, 2026<br>
 **Developer:** Mobyle<br>
 **Contact:** [support@mobyleapps.com](mailto:support@mobyleapps.com)
 
@@ -77,7 +77,7 @@ We use this only to find and fix bugs and to make the app faster. Google process
 
 The gallery screen shows ads served by **Google AdMob**. Ads never appear while you draw.
 
-To show ads and measure them, AdMob receives your device's **advertising ID**, IP address and device information. In regions where the law requires it (such as the European Economic Area and the UK), Nanquim asks for your consent before showing personalized ads, and you can change your choice at any time in Settings › Privacy › *Ad choices*. Elsewhere you can opt out of personalized ads, or reset or delete your advertising ID, in Android's settings (Settings › Privacy › Ads, or Google › Ads).
+To show ads and measure them, AdMob receives your device's **advertising ID**, IP address and device information. In regions where the law requires it (such as the European Economic Area and the UK), Nanquim asks for your consent before showing personalized ads, and you can change your choice at any time in Settings › Privacy › *Ad choices*. In US states with their own privacy laws (such as California), the same *Ad choices* item lets you opt out of the sale or sharing of your data for personalized advertising. Elsewhere you can opt out of personalized ads, or reset or delete your advertising ID, in Android's settings (Settings › Privacy › Ads, or Google › Ads).
 
 Google's use of this data is described in [How Google uses information from sites or apps that use its services](https://policies.google.com/technologies/partner-sites).
 
@@ -117,7 +117,7 @@ See also the [Terms of Use](/nanquim/terms/).
 
 # Política de Privacidade do Nanquim
 
-**Data de vigência:** 12 de novembro de 2026<br>
+**Data de vigência:** 16 de novembro de 2026<br>
 **Desenvolvedor:** Mobyle<br>
 **Contato:** [support@mobyleapps.com](mailto:support@mobyleapps.com)
 
@@ -153,7 +153,7 @@ Usamos esses dados apenas para encontrar e corrigir erros e deixar o app mais r�
 
 A tela da galeria exibe anúncios fornecidos pelo **Google AdMob**. Os anúncios nunca aparecem enquanto você desenha.
 
-Para exibir e medir os anúncios, o AdMob recebe o **ID de publicidade** do aparelho, o endereço IP e informações do aparelho. Nas regiões em que a lei exige (como o Espaço Econômico Europeu e o Reino Unido), o Nanquim pede seu consentimento antes de exibir anúncios personalizados, e você pode mudar sua escolha a qualquer momento em Configurações › Privacidade › *Opções de anúncios*. Nas demais regiões, você pode desativar os anúncios personalizados ou redefinir ou excluir seu ID de publicidade nas configurações do Android (Configurações › Privacidade › Anúncios, ou Google › Anúncios).
+Para exibir e medir os anúncios, o AdMob recebe o **ID de publicidade** do aparelho, o endereço IP e informações do aparelho. Nas regiões em que a lei exige (como o Espaço Econômico Europeu e o Reino Unido), o Nanquim pede seu consentimento antes de exibir anúncios personalizados, e você pode mudar sua escolha a qualquer momento em Configurações › Privacidade › *Opções de anúncios*. Nos estados dos EUA com leis de privacidade próprias (como a Califórnia), o mesmo item *Opções de anúncios* permite recusar a venda ou o compartilhamento dos seus dados para publicidade personalizada. Nas demais regiões, você pode desativar os anúncios personalizados ou redefinir ou excluir seu ID de publicidade nas configurações do Android (Configurações › Privacidade › Anúncios, ou Google › Anúncios).
 
 O uso desses dados pelo Google está descrito em [Como o Google usa informações de sites ou apps que utilizam nossos serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR).
 
