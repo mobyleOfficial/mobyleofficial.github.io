@@ -1,0 +1,19 @@
+# Nanquim release notes, shown on /nanquim/ (newest first).
+# To add a version, copy a block to the top and fill in both languages.
+# `date` is optional (YYYY-MM-DD); leave it out and no date is shown.
+
+- version: 1.1.0
+  en:
+    - "**Crash fixed.** Sometimes the part of the app that paints your strokes got confused and Nanquim closed all by itself. We taught it how to handle that moment, so now the app stays open and your drawing stays safe."
+    - "**General improvements** to make the app smoother and more stable."
+    - "**New:** an option to turn off the ads."
+  pt:
+    - "**Travamento corrigido.** Às vezes a parte do app que pinta os seus traços se confundia e o Nanquim fechava sozinho. Ensinamos ela a lidar com essa situação, então agora o app continua aberto e o seu desenho fica seguro."
+    - "**Melhorias gerais** para deixar o app mais leve e estável."
+    - "**Novidade:** opção para desativar as propagandas."
+
+- version: 1.0.0
+  en:
+    - "First version of Nanquim. 🎨"
+  pt:
+    - "Primeira versão do Nanquim. 🎨"
