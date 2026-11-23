@@ -1,0 +1,71 @@
+---
+layout: default
+title: Nanquim - What's New - Mobyle
+description: What's new in each version of Nanquim, the open-source painting app for Android.
+permalink: /nanquim/
+github_url: https://github.com/mobyleOfficial/Nanquim
+extra_css:
+  - /assets/nanquim/css/lang.css
+extra_js:
+  - /assets/nanquim/js/lang.js
+---
+<script>
+  /* Pick the language before the first paint (lang.js does the rest). */
+  (function () {
+    var lang = null;
+    try { lang = localStorage.getItem('nanquim.lang'); } catch (e) {}
+    if (lang !== 'en' && lang !== 'pt') {
+      var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+      lang = 'en';
+      for (var i = 0; i < list.length; i++) {
+        var code = String(list[i]).toLowerCase();
+        if (code.indexOf('pt') === 0) { lang = 'pt'; break; }
+        if (code.indexOf('en') === 0) break;
+      }
+    }
+    if (lang === 'pt') { document.documentElement.setAttribute('data-lang', 'pt'); document.documentElement.lang = 'pt-BR'; }
+  })();
+</script>
+<!-- Without JavaScript both languages show, one after the other, and the switch is hidden. -->
+<noscript><style>.policy .i18n { display: block !important; } .lang-switch { display: none !important; }</style></noscript>
+
+<main class="policy" data-title-en="Nanquim - What's New - Mobyle" data-title-pt="Nanquim - Novidades - Mobyle">
+<div class="container">
+
+<div class="lang-switch" role="group" aria-label="Language / Idioma">
+  <button type="button" class="lang-switch__btn" data-set-lang="en" aria-pressed="true" lang="en" title="English">EN</button>
+  <button type="button" class="lang-switch__btn" data-set-lang="pt" aria-pressed="false" lang="pt-BR" title="Português (Brasil)">PT-BR</button>
+</div>
+
+<div class="i18n" lang="en">
+  <h1>Nanquim</h1>
+  <p>The open-source painting app for Android. Here is what changed in each version.</p>
+  {%- for release in site.data.nanquim_releases %}
+  <h2 id="v{{ release.version }}">Version {{ release.version }}{% if release.date %} <small class="release-date">· {{ release.date | date: "%B %-d, %Y" }}</small>{% endif %}</h2>
+  <ul>
+    {%- for item in release.en %}
+    <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endfor %}
+  <hr>
+  <p><a href="{{ '/nanquim/privacy-policy/' | relative_url }}">Privacy policy</a> · <a href="{{ '/nanquim/terms/' | relative_url }}">Terms of use</a> · <a href="https://github.com/mobyleOfficial/Nanquim" target="_blank">Source code</a></p>
+</div>
+
+<div class="i18n" lang="pt-BR">
+  <h1>Nanquim</h1>
+  <p>O app de pintura de código aberto para Android. Veja o que mudou em cada versão.</p>
+  {%- for release in site.data.nanquim_releases %}
+  <h2 id="v{{ release.version }}-pt">Versão {{ release.version }}{% if release.date %} <small class="release-date">· {{ release.date | date: "%d/%m/%Y" }}</small>{% endif %}</h2>
+  <ul>
+    {%- for item in release.pt %}
+    <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endfor %}
+  <hr>
+  <p><a href="{{ '/nanquim/privacy-policy/' | relative_url }}">Política de privacidade</a> · <a href="{{ '/nanquim/terms/' | relative_url }}">Termos de uso</a> · <a href="https://github.com/mobyleOfficial/Nanquim" target="_blank">Código-fonte</a></p>
+</div>
+
+</div>
+</main>
