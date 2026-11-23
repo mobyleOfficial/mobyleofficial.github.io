@@ -62,6 +62,7 @@ title: Mobyle - iOS, Android & Flutter App Development
     <div class="container">
       <h2>Featured Work</h2>
       <div class="projects-grid">
+        {% comment %} Hidden for now: Moovie and Easy-Japanese.
         <!-- Moovie Project -->
         <div class="project-card">
           <h3>Moovie</h3>
@@ -77,6 +78,7 @@ title: Mobyle - iOS, Android & Flutter App Development
           <p class="description">Language learning app for learning Japanese</p>
           <a href="https://github.com/mobyleOfficial/Easy-Japanese" target="_blank" class="project-link">View on GitHub →</a>
         </div>
+        {% endcomment %}
 
         <!-- Abbay Project -->
         <div class="project-card">
@@ -89,17 +91,6 @@ title: Mobyle - iOS, Android & Flutter App Development
             <a href="{{ '/abbay/' | relative_url }}" class="project-link">About →</a>
             <a href="{{ '/abbay/privacy-policy/' | relative_url }}" class="project-link">Privacy (iOS) →</a>
             <a href="{{ '/abbay/android/privacy-policy/' | relative_url }}" class="project-link">Privacy (Android) →</a>
-          </div>
-        </div>
-
-        <!-- Pomodogo Project -->
-        <div class="project-card">
-          <h3>Pomodogo</h3>
-          <p class="tech">Android (Kotlin Multiplatform • Compose) • Wear OS</p>
-          <p class="description">A focus timer where a dog keeps you company. Pomodoro and stopwatch modes, app blocking, tasks, ambient sounds, statistics and a room to decorate with what you earn by focusing.</p>
-          <div class="abbay-links">
-            <a href="{{ '/pomodogo/privacy-policy/' | relative_url }}" class="project-link">Privacy →</a>
-            <a href="{{ '/pomodogo/terms/' | relative_url }}" class="project-link">Terms →</a>
           </div>
         </div>
 
@@ -116,12 +107,31 @@ title: Mobyle - iOS, Android & Flutter App Development
           </div>
         </div>
 
+        <!-- Pomodogo Project -->
+        <div class="project-card project-card--soon">
+          <h3>Pomodogo <span class="badge-soon">Coming soon</span></h3>
+          <p class="tech">Android (Kotlin Multiplatform • Compose) • Wear OS</p>
+          <p class="description">A focus timer where a dog keeps you company. Pomodoro and stopwatch modes, app blocking, tasks, ambient sounds, statistics and a room to decorate with what you earn by focusing.</p>
+          <div class="abbay-links">
+            <a href="{{ '/pomodogo/privacy-policy/' | relative_url }}" class="project-link">Privacy →</a>
+            <a href="{{ '/pomodogo/terms/' | relative_url }}" class="project-link">Terms →</a>
+          </div>
+        </div>
+
         <!-- Ingresso Cinema Map Project -->
         <div class="project-card">
           <h3>Ingresso Cinema Map</h3>
           <p class="tech">Chrome Extension</p>
           <p class="description">Interactive cinema map on ingresso.com — find the nearest theater, compare distances, and pick the ideal spot alone or with friends.</p>
           <a href="https://ingresso-cinema-map.pages.dev/" target="_blank" class="project-link">View site →</a>
+        </div>
+
+        <!-- Ingresso Seat Percentage Project -->
+        <div class="project-card">
+          <h3>Ingresso Seat Percentage</h3>
+          <p class="tech">Chrome • Firefox Extension</p>
+          <p class="description">Shows how full each theater is above every showtime on ingresso.com, so you can pick a quieter session before buying.</p>
+          <a href="https://github.com/mobyleOfficial/seat-percentage" target="_blank" class="project-link">View on GitHub →</a>
         </div>
       </div>
 
