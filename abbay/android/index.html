@@ -1,0 +1,334 @@
+---
+layout: default
+title: Abbay - free public-domain audiobooks for Android - Mobyle
+description: Abbay is a free audiobook player for Android. Listen to thousands of public-domain classics from LibriVox, your own files or your Audiobookshelf server, offline, with no account and no ads.
+permalink: /abbay/android/
+extra_css:
+  - /assets/abbay/css/lang.css
+  - /assets/abbay/css/abbay.css
+extra_js:
+  - /assets/abbay/js/lang.js
+  - /assets/abbay/js/reveal.js
+github_url: https://github.com/mobyleOfficial/AbbayAndroid
+play_url: https://play.google.com/store/apps/details?id=com.mobyle.abbay
+support_form_url_en: https://forms.gle/CXPihChmJakqjkTdA
+support_form_url_pt: https://forms.gle/C3vpmv7hiMXATCTH6
+support_email: support@mobyleapps.com
+---
+{%- comment -%}
+  The Android twin of /abbay/ (the iPhone page). Same two languages side by side in `.i18n` pairs,
+  switched by lang.js (titles from data-title-en / data-title-pt below); screenshots instead of clips.
+  Without JavaScript the page is English and the language switch is hidden.
+{%- endcomment -%}
+<script>
+  /* Pick the language before the first paint, as on the iPhone page (lang.js does the rest). */
+  (function () {
+    var lang = null;
+    try { lang = localStorage.getItem('abbay.lang'); } catch (e) {}
+    if (lang !== 'en' && lang !== 'pt') {
+      var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+      lang = 'en';
+      for (var i = 0; i < list.length; i++) {
+        var code = String(list[i]).toLowerCase();
+        if (code.indexOf('pt') === 0) { lang = 'pt'; break; }
+        if (code.indexOf('en') === 0) break;
+      }
+    }
+    if (lang === 'pt') { document.documentElement.setAttribute('data-lang', 'pt'); document.documentElement.lang = 'pt-BR'; }
+  })();
+</script>
+<noscript><style>.lang-switch { display: none !important; }</style></noscript>
+
+<a class="skip-link" href="#main">
+  <span class="i18n" lang="en">Skip to content</span><span class="i18n" lang="pt-BR">Pular para o conteúdo</span>
+</a>
+
+<header class="ab-header">
+  <div class="ab-header__inner">
+    <a class="ab-header__home" href="{{ '/' | relative_url }}">
+      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Mobyle" width="48" height="34">
+    </a>
+    <div class="lang-switch" role="group" aria-label="Language / Idioma">
+      <button type="button" class="lang-switch__btn" data-set-lang="en" aria-pressed="true" lang="en" title="English">EN</button>
+      <button type="button" class="lang-switch__btn" data-set-lang="pt" aria-pressed="false" lang="pt-BR" title="Português (Brasil)">PT-BR</button>
+    </div>
+  </div>
+</header>
+
+<main class="abbay" id="main"
+      data-title-en="Abbay - free public-domain audiobooks for Android - Mobyle"
+      data-title-pt="Abbay - audiolivros grátis de domínio público para Android - Mobyle">
+
+  <!-- Hero -->
+  <section class="ab-hero" aria-labelledby="hero-title">
+    <div class="ab-container ab-hero__grid">
+      <div class="ab-hero__copy">
+        <img class="ab-hero__icon" src="{{ '/assets/abbay/img/icon-128.png' | relative_url }}"
+             srcset="{{ '/assets/abbay/img/icon-128.png' | relative_url }} 1x, {{ '/assets/abbay/img/icon-256.png' | relative_url }} 2x"
+             width="112" height="112" alt="Abbay app icon">
+        <h1 id="hero-title" class="ab-hero__title">Abbay</h1>
+        <p class="ab-hero__tagline">
+          <span class="i18n" lang="en">Free audiobooks, from the public domain.</span>
+          <span class="i18n" lang="pt-BR">Audiolivros grátis, de domínio público.</span>
+        </p>
+        <p class="ab-hero__lede">
+          <span class="i18n" lang="en">Thousands of classics read by LibriVox volunteers, your own audiobook files and your Audiobookshelf server, all in one player. Listen offline and pick up right where you left off.</span>
+          <span class="i18n" lang="pt-BR">Milhares de clássicos lidos pelos voluntários do LibriVox, seus próprios arquivos de audiolivro e o seu servidor Audiobookshelf, tudo em um só player. Ouça offline e continue exatamente de onde parou.</span>
+        </p>
+        <!-- Google's official badge (play.google.com/intl/en_us/badges), unmodified, one per language. -->
+        <a class="store-badge store-badge--play" href="{{ page.play_url }}">
+          <img class="i18n" lang="en" src="{{ '/assets/abbay/android/img/get-it-on-google-play-en.png' | relative_url }}" width="646" height="250" alt="Get it on Google Play">
+          <img class="i18n" lang="pt-BR" src="{{ '/assets/abbay/android/img/get-it-on-google-play-pt.png' | relative_url }}" width="646" height="250" alt="Disponível no Google Play">
+        </a>
+        <p class="ab-hero__note">
+          <span class="i18n" lang="en">For Android. Free, no account needed. On an iPhone? <a href="{{ '/abbay/' | relative_url }}">Abbay for iPhone</a></span>
+          <span class="i18n" lang="pt-BR">Para Android. Grátis, sem precisar de conta. Usa iPhone? <a href="{{ '/abbay/' | relative_url }}">Abbay para iPhone</a></span>
+        </p>
+      </div>
+      <div class="ab-hero__device">
+        <div class="ab-hero__glow" aria-hidden="true"></div>
+        {% include abbay-android-phone.html shot="player" eager="true"
+           label_en="Abbay on Android: the player, tinted by the cover of Pride and Prejudice, with chapters, speed, sleep timer, bookmarks and audio effects."
+           label_pt="O Abbay no Android: o player, com a cor da capa de Dom Casmurro, com capítulos, velocidade, timer, marcadores e efeitos de áudio." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- LibriVox -->
+  <section class="ab-feature" aria-labelledby="f-librivox">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Free, forever</span><span class="i18n" lang="pt-BR">Grátis, para sempre</span></p>
+        <h2 id="f-librivox">
+          <span class="i18n" lang="en">A whole library of classics</span>
+          <span class="i18n" lang="pt-BR">Uma biblioteca inteira de clássicos</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Browse what's popular on LibriVox or search for any title or author. Every book is in the public domain and read by volunteers, so it costs nothing, today and always.</span>
+          <span class="i18n" lang="pt-BR">Veja o que está em alta no LibriVox ou busque qualquer título ou autor. Todos os livros são de domínio público e lidos por voluntários, então não custam nada, hoje e sempre.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-android-phone.html shot="librivox"
+           label_en="LibriVox in Abbay: a search field above a grid of popular books."
+           label_pt="O LibriVox no Abbay: um campo de busca acima de uma grade de livros populares." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Library / offline -->
+  <section class="ab-feature ab-feature--flip" aria-labelledby="f-offline">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Offline</span><span class="i18n" lang="pt-BR">Offline</span></p>
+        <h2 id="f-offline">
+          <span class="i18n" lang="en">Download once, listen anywhere</span>
+          <span class="i18n" lang="pt-BR">Baixe uma vez, ouça em qualquer lugar</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Books are saved on your phone, so they play on a plane, on the subway or far from any signal. Or don't download at all and just stream. Your library shows what's in progress, new and finished, and keeps your place in every book.</span>
+          <span class="i18n" lang="pt-BR">Os livros ficam salvos no seu celular e tocam no avião, no metrô ou longe de qualquer sinal. Ou nem baixe e ouça direto. A biblioteca mostra o que está em andamento, o que é novo e o que já terminou, e guarda o seu ponto em cada livro.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-android-phone.html shot="grid"
+           label_en="Your Audiobooks: a grid of covers with each book's chapter and progress, and the mini player at the bottom."
+           label_pt="Seus audiolivros: uma grade de capas com o capítulo e o progresso de cada livro, e o mini player embaixo." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Read-along -->
+  <section class="ab-feature" aria-labelledby="f-readalong">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Read along</span><span class="i18n" lang="pt-BR">Leitura acompanhada</span></p>
+        <h2 id="f-readalong">
+          <span class="i18n" lang="en">Follow the words as they're read</span>
+          <span class="i18n" lang="pt-BR">Acompanhe as palavras enquanto são lidas</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Swap the cover for the text: Abbay transcribes the audio on your phone and highlights each word as the narrator reads it. Great for learning a language or just keeping up.</span>
+          <span class="i18n" lang="pt-BR">Troque a capa pelo texto: o Abbay transcreve o áudio no próprio celular e destaca cada palavra conforme o narrador lê. Ótimo para aprender um idioma ou simplesmente acompanhar.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-android-phone.html shot="readalong"
+           label_en="Read-along in the player: the transcript of Alice's Adventures in Wonderland, with the word being read highlighted."
+           label_pt="A leitura acompanhada no player: a transcrição de Alice no País das Maravilhas, com a palavra lida em destaque." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Audio effects -->
+  <section class="ab-feature ab-feature--flip" aria-labelledby="f-effects">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Your sound</span><span class="i18n" lang="pt-BR">O seu som</span></p>
+        <h2 id="f-effects">
+          <span class="i18n" lang="en">Make every narrator easy to hear</span>
+          <span class="i18n" lang="pt-BR">Deixe qualquer narrador fácil de ouvir</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Clean up noisy recordings, shorten long silences, boost quiet volume and shape the voice with a 10-band equalizer. Save it as a preset or apply it to all books.</span>
+          <span class="i18n" lang="pt-BR">Limpe gravações com ruído, encurte silêncios longos, aumente o volume baixo e ajuste a voz com um equalizador de 10 bandas. Salve como predefinição ou aplique a todos os livros.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-android-phone.html shot="effects"
+           label_en="Audio effects: noise reduction, silence shortening, volume boost, a 10-band equalizer, mono and balance, and pitch."
+           label_pt="Efeitos de áudio: redução de ruído, encurtar silêncios, aumento de volume, equalizador de 10 bandas, mono e balanço, e tom." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sleep timer -->
+  <section class="ab-feature" aria-labelledby="f-sleep">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Bedtime</span><span class="i18n" lang="pt-BR">Hora de dormir</span></p>
+        <h2 id="f-sleep">
+          <span class="i18n" lang="en">Fall asleep to a story</span>
+          <span class="i18n" lang="pt-BR">Durma ouvindo uma história</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Stop after a few minutes or at the end of the chapter. Still awake? Shake the phone to give the timer more time, without even turning the screen on.</span>
+          <span class="i18n" lang="pt-BR">Pare depois de alguns minutos ou no fim do capítulo. Ainda acordado? Sacuda o celular para dar mais tempo ao timer, sem nem ligar a tela.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-android-phone.html shot="sleep"
+           label_en="The sleep timer: from 5 to 90 minutes, end of chapter, end of track or a custom time, and shake sensitivity."
+           label_pt="O timer de sono: de 5 a 90 minutos, fim do capítulo, fim da faixa ou um tempo personalizado, e a sensibilidade da sacudida." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Audiobookshelf -->
+  <section class="ab-feature ab-feature--flip" aria-labelledby="f-abs">
+    <div class="ab-container ab-feature__grid">
+      <div class="ab-feature__copy reveal">
+        <p class="ab-eyebrow"><span class="i18n" lang="en">Your server</span><span class="i18n" lang="pt-BR">O seu servidor</span></p>
+        <h2 id="f-abs">
+          <span class="i18n" lang="en">Bring your Audiobookshelf library</span>
+          <span class="i18n" lang="pt-BR">Traga a sua biblioteca do Audiobookshelf</span>
+        </h2>
+        <p>
+          <span class="i18n" lang="en">Running your own Audiobookshelf server? Connect to it and listen to your books over the internet or downloaded, right next to everything else in Abbay.</span>
+          <span class="i18n" lang="pt-BR">Tem o seu próprio servidor Audiobookshelf? Conecte-se a ele e ouça seus livros pela internet ou baixados, junto com todo o resto no Abbay.</span>
+        </p>
+      </div>
+      <div class="ab-feature__device reveal">
+        {% include abbay-android-phone.html shot="abs"
+           label_en="Connect to your server: the Audiobookshelf sign-in, with server address, username and password."
+           label_pt="Conectar ao seu servidor: o login do Audiobookshelf, com endereço do servidor, usuário e senha." %}
+      </div>
+    </div>
+  </section>
+
+  <!-- More -->
+  <section class="ab-more" aria-labelledby="f-more">
+    <div class="ab-container">
+      <h2 id="f-more" class="visually-hidden"><span class="i18n" lang="en">And also</span><span class="i18n" lang="pt-BR">E também</span></h2>
+      <div class="ab-cards">
+        <article class="ab-card reveal">
+          <svg class="ab-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4l2 2h9A1.5 1.5 0 0 1 21 9.5v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 11v5m0 0l-2-2m2 2l2-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3><span class="i18n" lang="en">Your own audiobooks, too</span><span class="i18n" lang="pt-BR">Seus próprios audiolivros também</span></h3>
+          <p>
+            <span class="i18n" lang="en">Already have audiobook files? Add a file or a whole folder and they sit right next to your LibriVox books, with the same player, chapters and all.</span>
+            <span class="i18n" lang="pt-BR">Já tem arquivos de audiolivro? Adicione um arquivo ou uma pasta inteira e eles ficam junto dos seus livros do LibriVox, com o mesmo player, capítulos e tudo.</span>
+          </p>
+        </article>
+        <article class="ab-card reveal">
+          <svg class="ab-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 20a3 3 0 0 1 3 0M3 17.5a5.5 5.5 0 0 1 5.5 2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h3><span class="i18n" lang="en">Cast it, drive with it</span><span class="i18n" lang="pt-BR">Transmita e leve no carro</span></h3>
+          <p>
+            <span class="i18n" lang="en">Send the book to a Chromecast or another Cast device, keep listening in the car with Android Auto, and control playback from widgets and Quick Settings.</span>
+            <span class="i18n" lang="pt-BR">Mande o livro para um Chromecast ou outro dispositivo Cast, continue ouvindo no carro com o Android Auto e controle a reprodução pelos widgets e pelas Configurações rápidas.</span>
+          </p>
+        </article>
+        <article class="ab-card reveal">
+          <svg class="ab-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.5c0 4.3-2.9 8-7 9.5-4.1-1.5-7-5.2-7-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3><span class="i18n" lang="en">No account. No ads.</span><span class="i18n" lang="pt-BR">Sem conta. Sem anúncios.</span></h3>
+          <p>
+            <span class="i18n" lang="en">Abbay doesn't ask who you are and your books stay on your phone. Only anonymous crash reports and usage statistics are sent, and you can turn them off in Settings.</span>
+            <span class="i18n" lang="pt-BR">O Abbay não pergunta quem você é e seus livros ficam no seu celular. Só são enviados relatórios de falhas e estatísticas de uso anônimos, e você pode desativá-los nas Configurações.</span>
+            <a href="{{ '/abbay/android/privacy-policy/' | relative_url }}"><span class="i18n" lang="en">Read the privacy policy</span><span class="i18n" lang="pt-BR">Leia a política de privacidade</span></a>
+          </p>
+        </article>
+        <article class="ab-card reveal">
+          <svg class="ab-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h10M4 12h6M4 17h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="13" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <h3><span class="i18n" lang="en">Made to fit how you listen</span><span class="i18n" lang="pt-BR">Do jeito que você ouve</span></h3>
+          <p>
+            <span class="i18n" lang="en">Pick your skip lengths, smart rewind when you come back, bookmarks, chapters and playback speed, and choose which buttons the player shows.</span>
+            <span class="i18n" lang="pt-BR">Escolha o tamanho dos saltos, o retrocesso inteligente ao voltar, marcadores, capítulos e velocidade, e quais botões o player mostra.</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the developer -->
+  <section class="ab-about" aria-labelledby="about-title">
+    <div class="ab-container">
+      <div class="ab-about__card reveal">
+        <h2 id="about-title"><span class="i18n" lang="en">About the developer</span><span class="i18n" lang="pt-BR">Sobre o desenvolvedor</span></h2>
+        <p class="ab-about__note">
+          <span class="i18n" lang="en">They say if an app is free, you're the product. Here it's the other way around: <em>I'm</em> the product. Abbay is free, with no ads. If you enjoy it, I'd love to hear from you — I'm always happy to meet new people.</span>
+          <span class="i18n" lang="pt-BR">Dizem que, se um app é grátis, o produto é você. Aqui é o contrário: o produto <em>sou eu</em>. O Abbay é grátis e sem anúncios. Se você gostar, adoraria ouvir de você — sempre gosto de conhecer gente nova.</span>
+        </p>
+        <p class="ab-about__sign">Edson Toma</p>
+        <a class="ab-button" href="https://www.linkedin.com/in/edyuto" rel="noopener" target="_blank">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.76-2.06 4.02 0 4.76 2.64 4.76 6.08V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
+          <span class="i18n" lang="en">Say hi on LinkedIn</span><span class="i18n" lang="pt-BR">Diga oi no LinkedIn</span>
+          <span class="visually-hidden"><span class="i18n" lang="en">(opens in a new tab)</span><span class="i18n" lang="pt-BR">(abre em uma nova aba)</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support -->
+  <section class="ab-about ab-support" id="support" aria-labelledby="support-title">
+    <div class="ab-container">
+      <div class="ab-about__card reveal">
+        <h2 id="support-title"><span class="i18n" lang="en">Support</span><span class="i18n" lang="pt-BR">Suporte</span></h2>
+        <p class="ab-about__note">
+          <span class="i18n" lang="en">Found a bug, have a question or an idea for Abbay? Tell me through the form and I'll get back to you.</span>
+          <span class="i18n" lang="pt-BR">Encontrou um problema, tem uma dúvida ou uma ideia para o Abbay? Me conte pelo formulário que eu respondo.</span>
+        </p>
+        <span class="i18n" lang="en">
+          <a class="ab-button" href="{{ page.support_form_url_en }}" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            Contact support<span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </span>
+        <span class="i18n" lang="pt-BR">
+          <a class="ab-button" href="{{ page.support_form_url_pt }}" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9a1.5 1.5 0 0 1-1.5 1.5H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            Falar com o suporte<span class="visually-hidden"> (abre em uma nova aba)</span>
+          </a>
+        </span>
+        <p class="ab-support__alt">
+          <span class="i18n" lang="en">Prefer email? Write to</span><span class="i18n" lang="pt-BR">Prefere email? Escreva para</span>
+          <a href="mailto:{{ page.support_email }}?subject=Abbay%20Android">{{ page.support_email }}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ab-credits">
+    <div class="ab-container">
+      <p>
+        <span class="i18n" lang="en">The audiobooks come from <a href="https://librivox.org" rel="noopener">LibriVox</a>, whose volunteers record public-domain books and release them to the public domain. Abbay is an independent app, not affiliated with LibriVox or Audiobookshelf. Google Play and the Google Play logo are trademarks of Google LLC.</span>
+        <span class="i18n" lang="pt-BR">Os audiolivros vêm do <a href="https://librivox.org" rel="noopener">LibriVox</a>, cujos voluntários gravam livros de domínio público e os liberam em domínio público. O Abbay é um app independente, sem vínculo com o LibriVox ou o Audiobookshelf. Google Play e o logotipo do Google Play são marcas registradas da Google LLC.</span>
+      </p>
+      <p>
+        <a href="#support"><span class="i18n" lang="en">Support</span><span class="i18n" lang="pt-BR">Suporte</span></a>
+        ·
+        <a href="{{ '/abbay/android/privacy-policy/' | relative_url }}"><span class="i18n" lang="en">Privacy policy</span><span class="i18n" lang="pt-BR">Política de privacidade</span></a>
+        ·
+        <a href="{{ '/abbay/' | relative_url }}"><span class="i18n" lang="en">Abbay for iPhone</span><span class="i18n" lang="pt-BR">Abbay para iPhone</span></a>
+      </p>
+    </div>
+  </section>
+</main>

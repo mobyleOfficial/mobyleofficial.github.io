@@ -90,6 +90,10 @@
 .store-badge img { display: block; height: 54px; width: auto; }
 .store-badge:hover { transform: translateY(-1px); }
 .store-badge:focus-visible { outline: 2px solid var(--malachite); outline-offset: 3px; }
+/* Google's "Get it on Google Play" badge carries its own clear space inside the artwork, so it is
+   drawn taller than Apple's to look the same size. */
+.store-badge--play { border-radius: 12px; }
+.store-badge--play img { height: 80px; margin: -13px 0; }
 
 /* ---------- Phone ---------- */
 .phone {
@@ -123,6 +127,12 @@
   height: 100%;
   object-fit: cover;
 }
+/* The Android page's phones: screenshots instead of clips, in their own 1080 x 2400 shape, with
+   the smaller corners and even bezel of an Android phone. */
+.phone--android .phone__frame { padding: 2.8%; border-radius: 10% / 4.6%; }
+.phone--android .phone__screen { aspect-ratio: 1080 / 2400; border-radius: 8% / 3.6%; }
+.phone--android .phone__video { vertical-align: top; } /* the .i18n pair turns it back to inline */
+
 .phone--hero { animation: rise 1s 0.2s cubic-bezier(.2, .7, .2, 1) both; }
 .phone--hero .phone__frame { animation: float 7s ease-in-out 1.2s infinite; }
 
