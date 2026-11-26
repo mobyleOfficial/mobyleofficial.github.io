@@ -1,0 +1,17 @@
+{%- comment -%}
+  A CSS-drawn Android phone with a screenshot of the app inside, one image per language (the .i18n pair
+  hides the other one, and a hidden lazy image is never downloaded).
+  include.shot: the screenshot's base name (assets/abbay/android/img/<shot>-<en|pt>.webp)
+  include.label_en / include.label_pt: what the screenshot shows, for screen readers.
+  include.eager: "true" for the hero (loaded at once); the others load when they come near the viewport.
+{%- endcomment -%}
+{%- assign base = '/assets/abbay/android/img/' | append: include.shot | relative_url -%}
+{%- if include.eager == 'true' -%}{%- assign loading = 'eager' -%}{%- else -%}{%- assign loading = 'lazy' -%}{%- endif -%}
+<figure class="phone phone--android{% if include.eager == 'true' %} phone--hero{% endif %}">
+  <div class="phone__frame">
+    <div class="phone__screen">
+      <img class="phone__video i18n" lang="en" src="{{ base }}-en.webp" width="600" height="1333" loading="{{ loading }}" decoding="async" alt="{{ include.label_en }}">
+      <img class="phone__video i18n" lang="pt-BR" src="{{ base }}-pt.webp" width="600" height="1333" loading="{{ loading }}" decoding="async" alt="{{ include.label_pt }}">
+    </div>
+  </div>
+</figure>
